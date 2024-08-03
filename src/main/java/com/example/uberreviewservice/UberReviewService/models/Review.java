@@ -12,28 +12,20 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@EntityListeners(AuditingEntityListener.class)
+//@EntityListeners(AuditingEntityListener.class)
 @Entity
 @Table(name="bookingreview")
-public class Review {
-    @Id//this annotation make the id property as primary key of our table;
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+public class Review extends  BaseModel{
 
     @Column(nullable = false)
     private String content;
 
-    Double rating;
+    private Double rating;
 
-    @Column(nullable = false)//this annotation helps in creating of table with Non-Null Values;
-    @Temporal(TemporalType.TIMESTAMP)  //this helps in having timestamp as value in it .
-    @CreatedDate        //this helps to only change value or handle when creation happens
-    private Date createdAt;
+    @Override
+    public String toString(){
+        return "Reviews:"+this.content+" "+this.rating+" "+this.createdAt;}
 
-    @Column(nullable = false)//this annotation helps in creating of table with Non-Null Values;
-    @Temporal(TemporalType.TIMESTAMP)//this helps in having timestamp as value in it .
-    @LastModifiedDate //this helps to only change value or handle when modification  happens
-    private Date updatedAt;
 
 
 }
