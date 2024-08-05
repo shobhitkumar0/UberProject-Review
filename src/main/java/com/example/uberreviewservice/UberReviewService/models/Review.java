@@ -14,7 +14,8 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 @AllArgsConstructor
 //@EntityListeners(AuditingEntityListener.class)
 @Entity
-@Table(name="bookingreview")
+@Table(name="booking_review")
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Review extends  BaseModel{
 
     @Column(nullable = false)
